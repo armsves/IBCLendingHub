@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Oracle from '../components/Oracle';
 
 interface NavbarProps {
   isClientReady: boolean;
@@ -39,6 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ isClientReady, connectWallet, disconnec
           className="rounded-full"
         />
         <h1 className="text-2xl font-bold">IBC Lending Hub</h1>
+        <Oracle/>
         <div>
           {isClientReady ? (
             <div className="relative">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SigningCosmWasmClient } from '@cosmjs/cosmwasm-stargate';
 import useLending from '../src/useLending';
-import { DepositorInfo } from '../src/lendingTypes';
+//import { DepositorInfo } from '../src/lendingTypes';
 import { toast } from 'react-toastify';
 
 interface LendingComponentProps {
@@ -11,18 +11,21 @@ interface LendingComponentProps {
 }
 
 const LendingComponent: React.FC<LendingComponentProps> = ({ client, contractAddress, userAddress }) => {
-    const { error, deposit, withdraw, takeLoan, getBalance, getAllBalances, getAllDepositors } = useLending(client, contractAddress);
+    const { error, deposit, withdraw, takeLoan, 
+        //getBalance, 
+        getAllBalances, 
+        //getAllDepositors 
+    } = useLending(client, contractAddress);
     const [days, setDays] = useState('');
     const [interest, setInterest] = useState('');
     const [amount, setAmount] = useState('');
     const [withdrawAmount, setWithdrawAmount] = useState('');
     const [withdrawDenom, setWithdrawDenom] = useState('');
-    const [depositor, setDepositor] = useState('');
     const [collateral, setCollateral] = useState('');
     const [denom, setDenom] = useState('');
     const [balances, setBalances] = useState<{ denom: string; amount: string }[]>([]);
     const [loading, setLoading] = useState(false);
-    const [depositors, setDepositors] = useState<DepositorInfo[]>([]);
+    //const [depositors, setDepositors] = useState<DepositorInfo[]>([]);
 
     /*
     useEffect(() => {

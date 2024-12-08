@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useOracle } from '../src/useOracle';
 
 const OracleComponent: React.FC = () => {
@@ -25,13 +25,17 @@ const OracleComponent: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    handleQueryPrices(); 
+    const interval = setInterval(handleQueryPrices, 10000); 
+    console.log('OracleComponent mounted');
+    return () => clearInterval(interval); 
+  }, []);
 
   return (
     <div>
-      <button onClick={handleQueryPrices}>Query NTRN/USD and ATOM/USD Prices</button>
       {ntrnAtomPrice && <p>NTRN/ATOM Price: {ntrnAtomPrice}</p>}
       {atomNtrnPrice && <p>ATOM/NTRN Price: {atomNtrnPrice}</p>}
-
     </div>
   );
 };
