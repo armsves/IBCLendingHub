@@ -34,7 +34,6 @@ const OracleComponent: React.FC = () => {
 
   return (
     <div>
-      <button onClick={handleQueryPrices}>Query NTRN/USD and ATOM/USD Prices</button>
       {ntrnAtomPrice && <p>NTRN/ATOM Price: {ntrnAtomPrice}</p>}
       {atomNtrnPrice && <p>ATOM/NTRN Price: {atomNtrnPrice}</p>}
     </div>
