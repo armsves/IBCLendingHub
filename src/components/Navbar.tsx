@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface NavbarProps {
   isClientReady: boolean;
@@ -30,6 +31,13 @@ const Navbar: React.FC<NavbarProps> = ({ isClientReady, connectWallet, disconnec
   return (
     <nav className="bg-blue-600 text-white p-4 sticky top-0 z-10">
       <div className="container mx-auto flex justify-between items-center">
+      <Image
+          src="/ibclendinghublogo.jpeg"
+          alt="IBC LendingHub Logo"
+          width={70}
+          height={20}
+          className="rounded-full"
+        />
         <h1 className="text-2xl font-bold">IBC Lending Hub</h1>
         <div>
           {isClientReady ? (

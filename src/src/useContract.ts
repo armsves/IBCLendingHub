@@ -71,5 +71,5 @@ export function useContract() {
     setWalletAddress(null);
   };
 
-  return { queryValue, executeIncrement, executeDecrement, executeSet, isClientReady, walletAddress, connectWallet, disconnectWallet };
+  return { queryValue, executeIncrement, executeDecrement, executeSet, client, isClientReady, walletAddress, connectWallet, disconnectWallet };
 }

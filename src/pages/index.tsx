@@ -1,13 +1,15 @@
-// App.tsx
 import React from 'react';
 import { useContract } from '../src/useContract';
 import Navbar from '../components/Navbar';
-import Home from '../components/Home';
 import Footer from '../components/Footer';
 import Oracle from '../components/Oracle';
+import Lending from '../components/Lending';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App: React.FC = () => {
-  const { queryValue, executeIncrement, executeDecrement, executeSet, isClientReady, connectWallet, disconnectWallet, walletAddress } = useContract();
+  const { queryValue, executeIncrement, executeDecrement, executeSet, client, isClientReady, connectWallet, disconnectWallet, walletAddress } = useContract();
+
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -17,18 +19,16 @@ const App: React.FC = () => {
         disconnectWallet={disconnectWallet}
         walletAddress={walletAddress}
       />
-      <Home
-        queryValue={queryValue}
-        executeIncrement={executeIncrement}
-        executeDecrement={executeDecrement}
-        executeSet={executeSet}
-        isClientReady={isClientReady}
-        connectWallet={connectWallet}
-        disconnectWallet={disconnectWallet}
-        walletAddress={walletAddress}
-      />
       <Oracle/>
+      {walletAddress && client && (
+        <Lending
+          client={client}
+          contractAddress={"neutron1mxgzhkggn8sx3d572wn27d99rwzf89x2kdc2g90yst8pzpk5mndsp32he7"}
+          userAddress={walletAddress}
+        />
+      )}
       <Footer/>
+      <ToastContainer />
     </div>
   );
 };
