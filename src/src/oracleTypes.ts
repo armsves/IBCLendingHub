@@ -16,5 +16,5 @@ export interface CurrencyPairsResponse {
 export interface QueryMsg {
   price?: { base: string; quote: string };
   prices?: { currency_pair_ids: string[] };
-  currency_pairs?: {};
+  currency_pairs?: object;
 }

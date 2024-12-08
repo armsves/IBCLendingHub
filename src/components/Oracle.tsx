@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useOracle } from '../src/useOracle';
 
 const OracleComponent: React.FC = () => {
@@ -6,7 +6,7 @@ const OracleComponent: React.FC = () => {
   const [ntrnAtomPrice, setNtrnAtomPrice] = useState<string | null>(null);
   const [atomNtrnPrice, setAtomNtrnPrice] = useState<string | null>(null);
 
-  const handleQueryPrices = async () => {
+  const handleQueryPrices = useCallback(async () => {
     const ntrnResponse = await queryPrice('NTRN', 'USD');
     const atomResponse = await queryPrice('ATOM', 'USD');
 
@@ -23,17 +23,18 @@ const OracleComponent: React.FC = () => {
       setNtrnAtomPrice(ntrnAtomPrice);
       setAtomNtrnPrice(atomNtrnPrice);
     }
-  };
+  }, [queryPrice]);
 
   useEffect(() => {
-    handleQueryPrices(); 
+    handleQueryPrices();
     const interval = setInterval(handleQueryPrices, 10000); 
     console.log('OracleComponent mounted');
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, [handleQueryPrices]);
 
   return (
     <div>
+      <button onClick={handleQueryPrices}>Query NTRN/USD and ATOM/USD Prices</button>
       {ntrnAtomPrice && <p>NTRN/ATOM Price: {ntrnAtomPrice}</p>}
       {atomNtrnPrice && <p>ATOM/NTRN Price: {atomNtrnPrice}</p>}
     </div>
