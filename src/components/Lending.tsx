@@ -43,21 +43,21 @@ const LendingComponent: React.FC<LendingComponentProps> = ({ client, contractAdd
     */
 
     useEffect(() => {
-        const fetchBalances = async () => {
-            try {
-                const result = await getAllBalances(userAddress);
-                if (result && Array.isArray(result.balances)) {
-                    setBalances(result.balances);
-                } else {
-                    console.error('Unexpected balances format:', result);
-                }
-            } catch (err) {
-                console.error('Failed to fetch balances:', err);
-            }
-        };
-
-        fetchBalances();
-    }, [userAddress, loading]);
+      const fetchBalances = async () => {
+        try {
+          const result = await getAllBalances(userAddress);
+          if (result && Array.isArray(result.balances)) {
+            setBalances(result.balances);
+          } else {
+            console.error('Unexpected balances format:', result);
+          }
+        } catch (err) {
+          console.error('Failed to fetch balances:', err);
+        }
+      };
+    
+      fetchBalances();
+    }, [userAddress, loading, getAllBalances]);
 
     const handleDeposit = async () => {
         setLoading(true);

@@ -35,7 +35,7 @@ export interface AllBalancesQuery {
 export type QueryMsg = 
     | { balance: BalanceQuery }
     | { all_balances: AllBalancesQuery }
-    | { all_depositors: {} };
+    | { all_depositors: object };
 
 export interface BalanceResponse {
     balance: string;

@@ -30,7 +30,7 @@ const OracleComponent: React.FC = () => {
     const interval = setInterval(handleQueryPrices, 10000); 
     console.log('OracleComponent mounted');
     return () => clearInterval(interval); 
-  }, []);
+  }, [handleQueryPrices]);
 
   return (
     <div>
