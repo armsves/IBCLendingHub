@@ -4,7 +4,9 @@ import { toast } from 'react-toastify';
 
 const IBCTransfer = () => {
   const [amount, setAmount] = useState('');
-  const [status, setStatus] = useState('');
+  const [status, 
+    //setStatus
+  ] = useState('');
 
   const initializeKeplr = async () => {
     if (!window.keplr) {
@@ -102,7 +104,7 @@ const IBCTransfer = () => {
         amount: [{ denom: "uatom", amount: "5000" }],
         gas: "200000",
       };
-      const result = await client.signAndBroadcast(accounts[0].address, [msg], fee);
+      await client.signAndBroadcast(accounts[0].address, [msg], fee);
       //setStatus(result.transactionHash);
       toast.success("Transfer successful");
     } catch (error) {

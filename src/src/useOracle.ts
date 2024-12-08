@@ -5,7 +5,7 @@ import { PriceResponse, CurrencyPairsResponse, QueryMsg } from './oracleTypes';
 import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate';
 
 const CONTRACT_ADDRESS = 'neutron1mwvu2rejxmfz34fe36y8x27hl04n5vc6ylx9g63wa547payva8mqva567k';
-const CHAIN_ID = 'pion-1';
+//const CHAIN_ID = 'pion-1';
 
 export const useOracle = () => {
   const [client, setClient] = useState<CosmWasmClient | null>(null);
